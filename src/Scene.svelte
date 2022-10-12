@@ -3,6 +3,7 @@
         BoxGeometry,
         SphereGeometry,
         CircleGeometry,
+        EdgesGeometry,
         BufferGeometry,
         MeshStandardMaterial,
         LineBasicMaterial,
@@ -29,7 +30,7 @@
     const { camera, scene } = useThrelte();
     
     const sphereGeo = new SphereGeometry(1, 50, 50);
-    const circleGeo = new CircleGeometry(1, 50).toNonIndexed();
+    const circleGeo = new EdgesGeometry(new CircleGeometry(1, 75));
     const traceMat = new LineBasicMaterial({ color: "#ffffff" });
 
     let group: Group;
