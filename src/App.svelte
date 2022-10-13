@@ -3,15 +3,21 @@
     import Scene from "./Scene.svelte";
     import { Canvas } from "@threlte/core";
 
+    let current = 0;
+    let fps = 0;
 </script>
 
 <div class="app">
     <div class="scene">
         <Canvas>
-            <Scene/>
+            <Scene bind:fps={fps} current={current}/>
         </Canvas>
     </div>
-    <InformationPanel/>
+    <InformationPanel
+        fps={fps}
+        onNext={() => { current++; current %= 7; }}
+        onPrev={() => { current--; if(current < 0) current = 6; }}
+        onHome={() => { current = 0; }}/>
 </div>
 
 <style>

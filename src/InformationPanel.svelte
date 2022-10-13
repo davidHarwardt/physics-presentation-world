@@ -1,18 +1,22 @@
 <script lang="ts">
-
+    export let onNext: () => void;
+    export let onPrev: () => void;
+    export let onHome: () => void;
+    export let fps: number = 0;
 </script>
 
 <div class="information-panel">
     <div class="panel-inner glass">
+        <div>{fps}</div>
         <h1>[title]</h1>
         <p>
             content
         </p>
     </div>
     <div class="nav-buttons">
-        <div class="button glass">&lt;</div>
-        <div class="button glass">&bull;</div>
-        <div class="button glass">&gt;</div>
+        <div class="button glass" on:click={onPrev}>&lt;</div>
+        <div class="button glass" on:click={onHome}>&bull;</div>
+        <div class="button glass" on:click={onNext}>&gt;</div>
     </div>
 </div>
 

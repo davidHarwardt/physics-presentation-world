@@ -26,6 +26,16 @@
 
     import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
     import { SSAARenderPass } from "three/examples/jsm/postprocessing/SSAARenderPass";
+    import Mesopotamia from "./slides/Mesopotamia.svelte";
+    import Egypt from "./slides/Egypt.svelte";
+    import Greek from "./slides/Greek.svelte";
+    import China from "./slides/China.svelte";
+    import America from "./slides/America.svelte";
+    import Europe from "./slides/Europe.svelte";
+    import Renaissance from "./slides/Renaissance.svelte";
+
+    export let current: number;
+    export let fps: number = 0;
 
     const { camera, scene } = useThrelte();
     
@@ -36,7 +46,8 @@
     let group: Group;
 
     useFrame((ctx, dt) => {
-        group.group.rotateY(dt);
+        // group.group.rotateY(dt);
+        fps = 1 / dt;
     });
 </script>
 
@@ -44,7 +55,6 @@
     <PerspectiveCamera position={{ x: 0, y: 0, z: 5 }}>
         <OrbitControls
             enableZoom
-            enableDamping
             target={{ x: 0, y: 0, z: 0 }}/>
     </PerspectiveCamera>
 
@@ -52,16 +62,31 @@
     <Pass pass={new UnrealBloomPass(undefined, 1, 1, 0.5)}/>
 
     <AmbientLight intensity={0.1}/>
-    <PointLight intensity={0.2}/>
+    <!-- <PointLight intensity={0.2}/> -->
 
-    <Mesh
+    <!-- <Mesh
         position={{ x: 0, y: 0, z: 0 }}
         scale={0.5}
         geometry={sphereGeo}
-        material={new MeshStandardMaterial({ color: "#ffffff", emissive: "#fce566", emissiveIntensity: 2 })}/>
+        material={new MeshStandardMaterial({ color: "#ffffff", emissive: "#fce566", emissiveIntensity: 2 })}/> -->
 
     <Group bind:this={group}>
-        <Mesh
+        {#if current == 0}
+            <Mesopotamia/>
+        {:else if current == 1}
+            <Egypt/>
+        {:else if current == 2}
+            <Greek/>
+        {:else if current == 3}
+            <China/>
+        {:else if current == 4}
+            <America/>
+        {:else if current == 5}
+            <Europe/>
+        {:else if current == 6}
+            <Renaissance/>
+        {/if}
+        <!-- <Mesh
             position={{ x: 5 }}
             scale={0.25}
             geometry={sphereGeo}
@@ -70,7 +95,7 @@
             rotation={{ x: Math.PI / 2 }}
             scale={5}
             geometry={circleGeo}
-            material={traceMat}/>
+            material={traceMat}/> -->
     </Group>
 </div>
 
