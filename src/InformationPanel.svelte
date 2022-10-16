@@ -3,15 +3,36 @@
     export let onPrev: () => void;
     export let onHome: () => void;
     export let fps: number = 0;
+    export let current: number;
+
+    import Markdown from "./lib/Markdown.svelte";
+    import { html as mesopotamia } from "./slides/mesopotamia.md";
+    import { html as egypt } from "./slides/egypt.md";
+    import { html as greek } from "./slides/greek.md";
+    import { html as china } from "./slides/china.md";
+    import { html as america } from "./slides/america.md";
+    import { html as europe } from "./slides/europe.md";
+    import { html as renaissance } from "./slides/renaissance.md";
+    import { html as kepler } from "./slides/kepler.md";
+    
 </script>
 
 <div class="information-panel">
     <div class="panel-inner glass">
         <div>{fps}</div>
-        <h1>[title]</h1>
-        <p>
-            content
-        </p>
+        {#if current == 0}      <Markdown src={mesopotamia}/>
+        {:else if current == 1} <Markdown src={egypt}/>
+        {:else if current == 2} <Markdown src={greek}/>
+        {:else if current == 3} <Markdown src={china}/>
+        {:else if current == 4} <Markdown src={america}/>
+        {:else if current == 5} <Markdown src={europe}/>
+        {:else if current == 6} <Markdown src={renaissance}/>
+        {:else if current == 7}
+            <Markdown src={kepler}/>
+            <div style="display: flex; align-items: center;">
+                <img src="/kepler.png" style="width: 10rem; margin: auto;" alt="kepler laws">
+            </div>
+        {/if}
     </div>
     <div class="nav-buttons">
         <div class="button glass" on:click={onPrev}>&lt;</div>
