@@ -12,8 +12,11 @@
     import { html as china } from "./slides/china.md";
     import { html as america } from "./slides/america.md";
     import { html as europe } from "./slides/europe.md";
+    import { html as kopernikus } from "./slides/kopernikus.md";
     import { html as renaissance } from "./slides/renaissance.md";
     import { html as kepler } from "./slides/kepler.md";
+
+    import keplerDiagram from "./assets/Kepler_laws_diagram.svg";
     
 </script>
 
@@ -26,11 +29,12 @@
         {:else if current == 3} <Markdown src={china}/>
         {:else if current == 4} <Markdown src={america}/>
         {:else if current == 5} <Markdown src={europe}/>
-        {:else if current == 6} <Markdown src={renaissance}/>
-        {:else if current == 7}
+        {:else if current == 6} <Markdown src={kopernikus}/>
+        {:else if current == 7} <Markdown src={renaissance}/>
+        {:else if current == 8}
             <Markdown src={kepler}/>
             <div style="display: flex; align-items: center;">
-                <img src="/kepler.png" style="width: 10rem; margin: auto;" alt="kepler laws">
+                <img src={keplerDiagram} style="width: 10rem; margin: auto;" alt="kepler laws">
             </div>
         {/if}
     </div>

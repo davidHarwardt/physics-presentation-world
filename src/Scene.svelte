@@ -39,6 +39,7 @@
     import Europe from "./slides/Europe.svelte";
     import Renaissance from "./slides/Renaissance.svelte";
     import { onMount } from "svelte";
+    import Kopernikus from "./slides/Kopernikus.svelte";
 
     export let current: number;
     export let fps: number = 0;
@@ -79,22 +80,15 @@
         material={new MeshStandardMaterial({ color: "#ffffff", emissive: "#fce566", emissiveIntensity: 2 })}/> -->
 
     <Group position={{ x: -60 }} bind:this={group}>
-        {#if current == 0}
-            <Mesopotamia/>
-        {:else if current == 1}
-            <Egypt/>
-        {:else if current == 2}
-            <Greek/>
-        {:else if current == 3}
-            <China/>
-        {:else if current == 4}
-            <America/>
-        {:else if current == 5}
-            <Europe/>
-        {:else if current == 6}
-            <Renaissance/>
-        {:else if current == 7}
-            <Renaissance/>
+        {#if current == 0}      <Mesopotamia/>
+        {:else if current == 1} <Egypt/>
+        {:else if current == 2} <Greek/>
+        {:else if current == 3} <China/>
+        {:else if current == 4} <America/>
+        {:else if current == 5} <Europe/>
+        {:else if current == 6} <Kopernikus/>
+        {:else if current == 7} <Renaissance/>
+        {:else if current == 8} <Renaissance/>
         {/if}
     </Group>
 </div>

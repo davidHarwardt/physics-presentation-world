@@ -15,8 +15,8 @@
     material={new MeshStandardMaterial({ map: planets.sun, lightMap: planets.sun, lightMapIntensity: 0.7 })}
     geometry={new SphereGeometry(10)}/>
 
-<!-- <PointLight
-    intensity={0.3}/> -->
+<PointLight
+    intensity={0.3}/>
 
 <Kepler
     texture={planets.mercury}

@@ -16,8 +16,8 @@
     <InformationPanel
         fps={fps}
         bind:current = {current}
-        onNext={() => { current++; current %= 8; }}
-        onPrev={() => { current--; if(current < 0) current = 7; }}
+        onNext={() => { current++; current %= 9; }}
+        onPrev={() => { current--; if(current < 0) current = 8; }}
         onHome={() => { current = 0; }}/>
 </div>
 

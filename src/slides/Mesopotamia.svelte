@@ -3,6 +3,7 @@
         Mesh,
         DirectionalLight,
         useFrame,
+        PointLight,
     } from "@threlte/core";
 
     import {
@@ -18,6 +19,7 @@
         IcosahedronGeometry,
         Vector2,
         ConeGeometry,
+        PlaneGeometry,
     } from "three";
 
     import { Water } from "three/examples/jsm/objects/Water";
@@ -37,6 +39,11 @@
     });
     water.material.side = DoubleSide;
 
+    import mesopotamiaTexture from "../assets/mesopotamia.jpg";
+    const mesopotamia = new TextureLoader().load(mesopotamiaTexture);
+
+    import stoneTexture from "../assets/stone.jpg";
+    const stone = new TextureLoader().load(stoneTexture);
 
     useFrame((_, dt) => {
         water.material.uniforms["time"].value += dt;
@@ -44,24 +51,17 @@
     
 </script>
 
-<DirectionalLight
-    position={{ x: 10, y: 100, z: 10 }}
-    intensity={0.5}/>
+<PointLight
+    position={{ y: 10, x: 10, z: 20 }}
+    intensity={0.2}/>
 
 <Mesh
-    rotation={{ x: -Math.PI / 2 }}
-    geometry={water.geometry}
-    material={water.material}/>
-
-<Mesh
-    scale={0.5}
-    position={{ y: 2.6 }}
-    geometry={new CylinderGeometry(90, 100, 10, 50, 2)}
-    material={new MeshStandardMaterial({ color: "#00ff00", side: DoubleSide })}/>
+    geometry={new PlaneGeometry(50, 50)}
+    material={new MeshStandardMaterial({ map: mesopotamia })}/>
 
 
 <Mesh
     rotation={{ x: -Math.PI / 2 }}
-    geometry={new SphereGeometry(100, 50, 50, 0, Math.PI, 0, Math.PI / 4 * 3)}
+    geometry={new SphereGeometry(1000)}
     material={new MeshStandardMaterial({ color: "#fca103", side: DoubleSide, transparent: true, opacity: 20.0, alphaMap: stars })}/>
 

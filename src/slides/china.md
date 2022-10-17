@@ -11,3 +11,5 @@
     - mit zunemender Entfernung nimmt Kontrolle ab
     - => Barbaren am Rand
         - keine Kultur, Städte, Schrift
+
+- Tierkreiszeichen beschreiben 12 Jahre des Jupiterumlaufes
