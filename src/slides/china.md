@@ -13,3 +13,4 @@
         - keine Kultur, Städte, Schrift
 
 - Tierkreiszeichen beschreiben 12 Jahre des Jupiterumlaufes
+- beobachteten berreits Sonnenflecken

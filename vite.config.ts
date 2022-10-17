@@ -10,5 +10,6 @@ let markdownIt = MarkdownIt()
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: "",
     plugins: [svelte(), mdPlugin({ mode: [Mode.HTML], markdownIt })],
 })
