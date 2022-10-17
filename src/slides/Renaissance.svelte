@@ -1,6 +1,8 @@
 <script lang="ts">
     import {
-        Mesh, PointLight
+    Group,
+    Line,
+        Mesh, PointLight, useFrame
     } from "@threlte/core";
     import Kepler from "../lib/Kepler.svelte";
     import * as planets from "./textures";
@@ -8,7 +10,19 @@
     import {
         SphereGeometry,
         MeshStandardMaterial,
+        LineBasicMaterial,
+        EdgesGeometry,
+        CircleGeometry,
     } from "three";
+
+    let earthGroup: Group;
+    let moonGroup: Group;
+
+    useFrame((_, dt) => {
+        earthGroup.group.rotateY(dt * (1 / 365) * 100);
+        moonGroup.group.rotateY(dt * (1 / 30) * 100);
+    });
+
 </script>
 
 <Mesh
@@ -30,12 +44,39 @@
     planetRadius={12.1}
     orbitDuration={224.7}/>
 
-<Kepler
+<!-- <Kepler
     texture={planets.earth}
     orbitRadius={149.6}
     planetRadius={12.7}
     orbitDuration={365.2}>
-</Kepler>
+</Kepler> -->
+<Line
+    rotation={{ x: -Math.PI / 2 }}
+    material={new LineBasicMaterial({ color: "#ffffff",  })}
+    geometry={new EdgesGeometry(new CircleGeometry(149.6, 50))}/>
+
+<Group bind:this={earthGroup}>
+    <Mesh
+        position={{ x: 149.6 }}
+        material={new MeshStandardMaterial({ map: planets.earth })}
+        geometry={new SphereGeometry(12.7)}/>
+
+    <Line
+        position={{ x: 149.6 }}
+        rotation={{ x: -Math.PI / 2 }}
+        material={new LineBasicMaterial({ color: "#ffffff",  })}
+        geometry={new EdgesGeometry(new CircleGeometry(20, 50))}/>
+
+    <Group bind:this={moonGroup} position={{ x: 149.6 }}>
+
+        <Mesh
+            position={{ x: 20 }}
+            material={new MeshStandardMaterial({ map: planets.moon })}
+            geometry={new SphereGeometry(2)}/>
+    </Group>
+</Group>
+
+
 
 <Kepler
     texture={planets.mars}
