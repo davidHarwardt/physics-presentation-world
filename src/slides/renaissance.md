@@ -12,4 +12,6 @@
 
 ### Isaac Newton
 - Masse der Körper übt Anziehungskraft aus
-
+```math
+F = G \frac{m_1 m_2}{r^2}
+```

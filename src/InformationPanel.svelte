@@ -22,7 +22,7 @@
 
 <div class="information-panel">
     <div class="panel-inner glass">
-        <div>{fps}</div>
+        <!-- <div>{fps}</div> -->
         {#if current == 0}      <Markdown src={mesopotamia}/>
         {:else if current == 1} <Markdown src={egypt}/>
         {:else if current == 2} <Markdown src={greek}/>
